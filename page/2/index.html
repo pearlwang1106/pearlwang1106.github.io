@@ -239,6 +239,559 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/709-to-lower-case/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/709-to-lower-case/" itemprop="url">【LeetCode】709. to Lower Case</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T20:02:07+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>题目连接: <a href="https://leetcode.com/problems/to-lower-case/description/" target="_blank" rel="noopener">https://leetcode.com/problems/to-lower-case/description/</a></p>
+</blockquote>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
+<li>输入: 一个字符串</li>
+<li>输出: 把字符串里的所有字母都转换成小写</li>
+</ul>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul>
+<li>输入: Hello</li>
+<li>输出: hello</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>判断如果是大写字母，则先转换为 ascii 码，然后计算出相应小写字母的 ascii 码再转换为字母</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string&#125; str</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">var toLowerCase = function(str) &#123;</span><br><span class="line">    var res = &apos;&apos;;</span><br><span class="line">    for(var i = 0; i &lt; str.length; i++) &#123;</span><br><span class="line">        s = str[i];</span><br><span class="line">        if (str[i] &gt;= &apos;A&apos; &amp;&amp; str[i] &lt;= &apos;Z&apos;) &#123;</span><br><span class="line">            s = String.fromCharCode(parseInt(str[i].charCodeAt() + 32, 10));</span><br><span class="line">        &#125;</span><br><span class="line">        res = res + s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    delete i;</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/js-prototype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/js-prototype/" itemprop="url">原型及原型链的简单理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T10:43:31+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>面试的时候被到原型的相关问题，回来后再次学习了一下原型及原型链，在这里做个总结。</p>
+<p><strong>问题</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line"></span><br><span class="line">function F() &#123;&#125;</span><br><span class="line">var f = new F();</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line"></span><br><span class="line">function F() &#123;return &apos;123&apos;;&#125;</span><br><span class="line">var f = new F();</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line"></span><br><span class="line">function F() &#123;return &#123;a:1&#125;;&#125;</span><br><span class="line">var f = new F();</span><br></pre></td></tr></table></figure>
+<p>这两种情况，f 的原型是如何指向的？</p>
+<p><strong>理解</strong></p>
+<p>想要知道 f 的原型指向，需要先了解 f 具体是什么。下面先说一下经过上述步骤后 的具体值分别是什么。</p>
+<p>首先，通过 new 来调用函数或者方法的方式，是<code>构造函数调用</code>。有三种情况：</p>
+<ol>
+<li>构造函数不使用 return 关键字，这种情况下，会初始化一个新的对象，这个对象继承自构造函数的 prototype 属性；当构造函数的执行体执行完毕时，会返回这个新对象。此时，构造函数调用表达式的计算结果就是这个新对象的值，如问题中的 case1。</li>
+<li>构造函数显式的使用了 return 关键字，返回了一个原始值，如问题中的 case2；这种情况下，仍然会初始化一个新的对象，这个对象继承自构造函数的 prototype 属性，return 的返回值将会被忽略，同时使用新对象作为调用结果。</li>
+<li>构造函数显式的使用了 return 关键字，并且返回了一个对象，如问题中的 case3，这种情况下，调用表达式的值就是这个对象。</li>
+</ol>
+<p>如果问题描述不是很清楚，可以从代码层面理解一下，new 过程的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function new() &#123;</span><br><span class="line">    // 创建一个空的对象</span><br><span class="line">    let obj = new Object()</span><br><span class="line">    // 获得构造函数</span><br><span class="line">    let Con = [].shift.call(arguments)</span><br><span class="line">    // 链接到原型</span><br><span class="line">    obj.__proto__ = Con.prototype</span><br><span class="line">    // 绑定 this，执行构造函数</span><br><span class="line">    let result = Con.apply(obj, arguments)</span><br><span class="line">    // 确保 new 出来的是个对象</span><br><span class="line">    return typeof result === &apos;object&apos; ? result : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码也可以看出，new 的过程最后会判断函数中 return 的是否是 object，不是的话才会返回一个新的对象</p>
+<p>所以上述问题中的三种情况，结果分别是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line">console.log(f);  // F &#123;&#125;</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line">console.log(f);  // F &#123;&#125;</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line">console.log(f); // &#123;a: 1&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，根据原型链可知</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line"></span><br><span class="line">f.__proto__ === F.prototype;</span><br><span class="line">F.__proto__ === Function.prototype;</span><br><span class="line">F.prototype.__proto__ === Object.prototype // 原型对象也是对象</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line"></span><br><span class="line">同 case1</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line"></span><br><span class="line">f.__proto__ === Object.prototype</span><br><span class="line">F.__proto__ === Function.prototype</span><br><span class="line">F.prototype.__proto__ === Object.prototype // 原型对象也是对象</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参考文档：<ul>
+<li><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">https://github.com/KieSun/Blog/issues/2</a></li>
+<li>javascript 权威指南</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/007-reverse-integer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/007-reverse-integer/" itemprop="url">【LeetCode】7. reverse Integer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T08:58:32+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>题目连接: <a href="https://leetcode.com/problems/reverse-integer/description/" target="_blank" rel="noopener">https://leetcode.com/problems/reverse-integer/description/</a></p>
+</blockquote>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
+<li>输入: 一个整数 x</li>
+<li>输出: 将 x 的每一位数字逆序输出</li>
+<li>注意: 整数区间  [−2的31次方,  2的31次方 − 1], 负数的负号要一直在首位，逆序后的数字也要在整数区间内</li>
+</ul>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul>
+<li>case1<ul>
+<li>输入: 123</li>
+<li>输出: 321</li>
+</ul>
+</li>
+<li>case2<ul>
+<li>输入: -123 </li>
+<li>输出: -321</li>
+</ul>
+</li>
+<li>case3<ul>
+<li>输入: 1200</li>
+<li>输出: 21</li>
+</ul>
+</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先转换成字符串再反转，方便处理</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number&#125; x</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> */</span><br><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    if (x === 0 || x &lt; -1 * Math.pow(2, 31) || x &gt; Math.pow(2, 31) - 1) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    var y = x.toString();</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    var flag = 0;</span><br><span class="line">    for (var i = y.length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        if (!flag &amp;&amp; y[i] === &apos;0&apos;) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        flag = 1;</span><br><span class="line">        s += y[i];</span><br><span class="line">        if (i === 0 &amp;&amp; y[0] === &apos;-&apos;) &#123;</span><br><span class="line">            s = &apos;-&apos; + s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    delete y;</span><br><span class="line">    delete i;</span><br><span class="line">    delete flag;</span><br><span class="line">    s = parseInt(s);</span><br><span class="line">    if (s &lt; -1 * Math.pow(2, 31) || s  &gt; Math.pow(2, 31) - 1) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return parseInt(s);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/001-two-sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/001-two-sum/" itemprop="url">【LeetCode】1. two Sum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T08:53:08+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>题目连接: <a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum/description/</a></p>
+</blockquote>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
+<li>输入: 整数数组 nums，目标和 target</li>
+<li>输出: 输出 nums 中想加和为 target 的两个数的坐标索引</li>
+</ul>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul>
+<li>输入: [2, 7, 11, 15], 9</li>
+<li>输出: [0, 1]   // 2 + 7 === 9</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> */</span><br><span class="line">var twoSum = function(nums, target) &#123;</span><br><span class="line">    var result = [];</span><br><span class="line">    for(var i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">        var index = nums.slice(i + 1).indexOf(target - nums[i]);</span><br><span class="line">        if (index &gt; -1)&#123;</span><br><span class="line">            result.push(i);</span><br><span class="line">            result.push(index + i + 1);</span><br><span class="line">            delete index;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -408,7 +961,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -421,7 +974,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
