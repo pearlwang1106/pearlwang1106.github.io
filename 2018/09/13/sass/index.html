@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Pearl&#39;s Blog">
 <meta property="og:description" content="参考文档: https://www.sass.hk/docs/  sass 可以认为是 css 的预处理, 在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅. 开源库compass 中就是基于 sass 完成的一个非常丰富的样式框架，包括大">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T07:51:02.635Z">
+<meta property="og:updated_time" content="2018-09-13T07:53:26.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass 学习">
 <meta name="twitter:description" content="参考文档: https://www.sass.hk/docs/  sass 可以认为是 css 的预处理, 在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅. 开源库compass 中就是基于 sass 完成的一个非常丰富的样式框架，包括大">
@@ -315,15 +315,16 @@
 </blockquote>
 <p>sass 可以认为是 css 的预处理, 在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅. 开源库<a href="http://compass-style.org/" target="_blank" rel="noopener">compass</a> 中就是基于 sass 完成的一个非常丰富的样式框架，包括大量定义好的mixin，函数，以及对SASS的扩展</p>
 <h2 id="sass-主要特点"><a href="#sass-主要特点" class="headerlink" title="sass 主要特点"></a>sass 主要特点</h2><ul>
-<li>支持变量<ul>
+<li><p>支持变量</p>
+<ul>
 <li>变量作用域</li>
-<li>变量命名中线和下划线不做区分($custom-name 和 $custom_name 是一样的)</li>
-</ul>
+<li><p>变量命名中线和下划线不做区分($custom-name 和 $custom_name 是一样的)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$width: 5em;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: $width;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 编译后 */</span></span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">5em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$width: 5em;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: $width;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 编译后 */</span></span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>允许嵌套</p>
 <ul>
-<li>允许嵌套<ul>
 <li>父选择器用 &amp; 表示</li>
 <li>属性嵌套</li>
 <li>群组嵌套</li>
@@ -331,16 +332,17 @@
 </li>
 <li><code>//</code> 注释编译后不会在 css 中显示</li>
 <li>支持命令行操作(SassScript)</li>
-<li>支持导入文件(@import)<ul>
+<li><p>支持导入文件(@import)</p>
+<ul>
 <li>sass(如果不想导入文件被编译为css, 则以下划线开头命名, 导入时不用加下划线, 如下例)</li>
 <li>scss</li>
-<li>css</li>
-</ul>
+<li><p>css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 文件 _colors.scss */</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> colors</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 文件 _colors.scss */</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> colors</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支持继承</p>
 <ul>
-<li>支持继承<ul>
 <li>多重继承</li>
 <li>链式继承</li>
 </ul>
