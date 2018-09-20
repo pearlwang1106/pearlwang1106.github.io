@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,javascript,字符串," />
+  <meta name="keywords" content="javascript,webpack," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题目连接: https://leetcode.com/problems/to-lower-case/description/  题目描述 输入: 一个字符串 输出: 把字符串里的所有字母都转换成小写  demo 输入: Hello 输出: hello  思路判断如果是大写字母，则先转换为 ascii 码，然后计算出相应小写字母的 ascii 码再转换为字母 代码12345678910111213">
-<meta name="keywords" content="leetcode,javascript,字符串">
+<meta name="description" content="打包优化的几种方式1. dll对于一些比较大的库，可以先进性打包后在引入 2. happypack 多线程打包启用多线程打包，js 是单线程，所以启用子进程打包  注意：项目比较小的时候，分配子进程所耗费的时候反而会增加打包时间，降低打包效率  1/* webpack.config.js */ 3. tree-shakingmodule 改成 production，此时打包过程中，没有 impor">
+<meta name="keywords" content="javascript,webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【LeetCode】709. to Lower Case">
-<meta property="og:url" content="http://yoursite.com/2018/08/23/709-to-lower-case/index.html">
+<meta property="og:title" content="webpack v4+ 打包优化学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/09/14/webpack/index.html">
 <meta property="og:site_name" content="Pearl&#39;s Blog">
-<meta property="og:description" content="题目连接: https://leetcode.com/problems/to-lower-case/description/  题目描述 输入: 一个字符串 输出: 把字符串里的所有字母都转换成小写  demo 输入: Hello 输出: hello  思路判断如果是大写字母，则先转换为 ascii 码，然后计算出相应小写字母的 ascii 码再转换为字母 代码12345678910111213">
+<meta property="og:description" content="打包优化的几种方式1. dll对于一些比较大的库，可以先进性打包后在引入 2. happypack 多线程打包启用多线程打包，js 是单线程，所以启用子进程打包  注意：项目比较小的时候，分配子进程所耗费的时候反而会增加打包时间，降低打包效率  1/* webpack.config.js */ 3. tree-shakingmodule 改成 production，此时打包过程中，没有 impor">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-24T03:05:21.000Z">
+<meta property="og:updated_time" content="2018-09-18T02:31:16.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【LeetCode】709. to Lower Case">
-<meta name="twitter:description" content="题目连接: https://leetcode.com/problems/to-lower-case/description/  题目描述 输入: 一个字符串 输出: 把字符串里的所有字母都转换成小写  demo 输入: Hello 输出: hello  思路判断如果是大写字母，则先转换为 ascii 码，然后计算出相应小写字母的 ascii 码再转换为字母 代码12345678910111213">
+<meta name="twitter:title" content="webpack v4+ 打包优化学习笔记">
+<meta name="twitter:description" content="打包优化的几种方式1. dll对于一些比较大的库，可以先进性打包后在引入 2. happypack 多线程打包启用多线程打包，js 是单线程，所以启用子进程打包  注意：项目比较小的时候，分配子进程所耗费的时候反而会增加打包时间，降低打包效率  1/* webpack.config.js */ 3. tree-shakingmodule 改成 production，此时打包过程中，没有 impor">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/23/709-to-lower-case/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/14/webpack/"/>
 
 
 
 
 
-  <title>【LeetCode】709. to Lower Case | Pearl's Blog</title>
+  <title>webpack v4+ 打包优化学习笔记 | Pearl's Blog</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/709-to-lower-case/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pearl">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【LeetCode】709. to Lower Case</h1>
+          <h1 class="post-title" itemprop="name headline">webpack v4+ 打包优化学习笔记</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-23T20:02:07+08:00">
-                2018-08-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T21:08:03+08:00">
+                2018-09-14
               </time>
             
 
@@ -310,19 +310,23 @@
       
 
       
-        <blockquote>
-<p>题目连接: <a href="https://leetcode.com/problems/to-lower-case/description/" target="_blank" rel="noopener">https://leetcode.com/problems/to-lower-case/description/</a></p>
+        <h2 id="打包优化的几种方式"><a href="#打包优化的几种方式" class="headerlink" title="打包优化的几种方式"></a>打包优化的几种方式</h2><h3 id="1-dll"><a href="#1-dll" class="headerlink" title="1. dll"></a>1. dll</h3><p>对于一些比较大的库，可以先进性打包后在引入</p>
+<h3 id="2-happypack-多线程打包"><a href="#2-happypack-多线程打包" class="headerlink" title="2. happypack 多线程打包"></a>2. happypack 多线程打包</h3><p>启用多线程打包，js 是单线程，所以启用子进程打包</p>
+<ul>
+<li>注意：项目比较小的时候，分配子进程所耗费的时候反而会增加打包时间，降低打包效率</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* webpack.config.js */</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-tree-shaking"><a href="#3-tree-shaking" class="headerlink" title="3. tree-shaking"></a>3. tree-shaking</h3><p>module 改成 production，此时打包过程中，没有 import 的function 不会被打包， 从容减少打包后文件的大小</p>
+<ul>
+<li>注意 node exports.a 写法不会进行 tree-shakingstree-shakings</li>
+</ul>
+<h3 id="4-避免重复打包"><a href="#4-避免重复打包" class="headerlink" title="4. 避免重复打包"></a>4. 避免重复打包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    filename: [name].js,</span><br><span class="line">&#125;,</span><br><span class="line">optimization: &#123;</span><br><span class="line">    splitChunks: &#123;</span><br><span class="line">        cacheGroups: &#123;</span><br><span class="line">            common: &#123;</span><br><span class="line">                chunks: <span class="string">'initial'</span>,</span><br><span class="line">                minChunks: <span class="number">2</span>,</span><br><span class="line">                minSize: <span class="number">0</span></span><br><span class="line">            &#125;,</span><br><span class="line">            vendor: &#123;</span><br><span class="line">                test: <span class="regexp">/node_modules/</span>, <span class="comment">// 一般用来限制第三方插件多次打包</span></span><br><span class="line">                chunks: <span class="string">'initial'</span>,</span><br><span class="line">                minChunks: <span class="number">2</span>,</span><br><span class="line">                minSize: <span class="number">0</span>,</span><br><span class="line">                priority: <span class="number">10</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><blockquote>
+<p>参考链接：<a href="https://webpack.docschina.org/plugins/module-concatenation-plugin" target="_blank" rel="noopener">https://webpack.docschina.org/plugins/module-concatenation-plugin</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let ModuleConcatenationPlugin</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
-<li>输入: 一个字符串</li>
-<li>输出: 把字符串里的所有字母都转换成小写</li>
-</ul>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul>
-<li>输入: Hello</li>
-<li>输出: hello</li>
-</ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>判断如果是大写字母，则先转换为 ascii 码，然后计算出相应小写字母的 ascii 码再转换为字母</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string&#125; str</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">var toLowerCase = function(str) &#123;</span><br><span class="line">    var res = &apos;&apos;;</span><br><span class="line">    for(var i = 0; i &lt; str.length; i++) &#123;</span><br><span class="line">        s = str[i];</span><br><span class="line">        if (str[i] &gt;= &apos;A&apos; &amp;&amp; str[i] &lt;= &apos;Z&apos;) &#123;</span><br><span class="line">            s = String.fromCharCode(parseInt(str[i].charCodeAt() + 32, 10));</span><br><span class="line">        &#125;</span><br><span class="line">        res = res + s;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    delete i;</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="6-懒加载"><a href="#6-懒加载" class="headerlink" title="6. 懒加载"></a>6. 懒加载</h3><blockquote>
+<p>参考文档：<a href="https://router.vuejs.org/guide/advanced/lazy-loading.html#grouping-components-in-the-same-chunk" target="_blank" rel="noopener">https://router.vuejs.org/guide/advanced/lazy-loading.html#grouping-components-in-the-same-chunk</a></p>
+</blockquote>
 
       
     </div>
@@ -340,11 +344,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -357,8 +359,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/23/js-prototype/" rel="next" title="原型及原型链的简单理解">
-                <i class="fa fa-chevron-left"></i> 原型及原型链的简单理解
+              <a href="/2018/09/13/sass/" rel="next" title="Sass 学习">
+                <i class="fa fa-chevron-left"></i> Sass 学习
               </a>
             
           </div>
@@ -366,10 +368,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/24/848-shifting-letters/" rel="prev" title="【LeetCode】848. Shifting Letters">
-                【LeetCode】848. Shifting Letters <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -506,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">2.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包优化的几种方式"><span class="nav-number">1.</span> <span class="nav-text">打包优化的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-dll"><span class="nav-number">1.1.</span> <span class="nav-text">1. dll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-happypack-多线程打包"><span class="nav-number">1.2.</span> <span class="nav-text">2. happypack 多线程打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-tree-shaking"><span class="nav-number">1.3.</span> <span class="nav-text">3. tree-shaking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-避免重复打包"><span class="nav-number">1.4.</span> <span class="nav-text">4. 避免重复打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.5.</span> <span class="nav-text">5.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-懒加载"><span class="nav-number">1.6.</span> <span class="nav-text">6. 懒加载</span></a></li></ol></li></ol></div>
             
 
           </div>
