@@ -239,6 +239,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/ideals30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/20/ideals30/" itemprop="url">理想三旬</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T19:48:55+08:00">
+                2018-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>青春又醉倒在<br>籍籍无名的怀<br>靠嬉笑来虚度，聚散得慷慨<br>辗转却去不到<br>对的站台<br>如果漂泊是成长，必经的路牌<br>你迷醒岁月中<br>那贫瘠的未来<br>像遗憾季节里，未结果的爱<br>弄脏了每一页诗<br>吻最疼痛的告白</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/14/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1528,139 +1650,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/js-async/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pearl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pearl's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/js-async/" itemprop="url">异步的顺序执行：promise, generator 以及 async/await</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-27T14:36:51+08:00">
-                2018-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1. 名词解释"></a>1. 名词解释</h2><ul>
-<li>Promise：简单讲就是通过链式调用解决了回调地域的问题</li>
-<li>Generator：Generator（迭代生成器）函数可以理解为是一个状态机，通过与函数内部的 <code>yield</code> 表达式配合使用达到使状态顺序执行的目的</li>
-<li>async/await：Generator 函数的语法糖</li>
-</ul>
-<h2 id="2-示例说明"><a href="#2-示例说明" class="headerlink" title="2. 示例说明"></a>2. 示例说明</h2><h3 id="1-问题说明"><a href="#1-问题说明" class="headerlink" title="1) 问题说明"></a>1) 问题说明</h3><p>假如我们要加载3个文件，第一个加载完之后，才去加载第二个，第二个加载完之后，才去加载第三个，这里为了显而易见，通过进度条表示加载进度</p>
-<p><strong>dom code</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>异步demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .file1,</span></span><br><span class="line"><span class="undefined">        .file2,</span></span><br><span class="line"><span class="undefined">        .file3 &#123;</span></span><br><span class="line"><span class="undefined">            display: flex;</span></span><br><span class="line"><span class="undefined">            margin: 20px auto;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .progress-bar-warpper &#123;</span></span><br><span class="line"><span class="undefined">            position: relative;</span></span><br><span class="line"><span class="undefined">            display: inline-block;</span></span><br><span class="line"><span class="undefined">            height: 22px;</span></span><br><span class="line"><span class="undefined">            width: 400px;</span></span><br><span class="line"><span class="undefined">            background: #c0c0c0;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .progress-bar &#123;</span></span><br><span class="line"><span class="undefined">            display: inline-block;</span></span><br><span class="line"><span class="undefined">            height: 22px;</span></span><br><span class="line"><span class="undefined">            width: 0;</span></span><br><span class="line"><span class="undefined">            background-color: #ff6347;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        .progress-num &#123;</span></span><br><span class="line"><span class="undefined">            position: absolute;</span></span><br><span class="line"><span class="undefined">            left: 0;</span></span><br><span class="line"><span class="undefined">            right: 0;</span></span><br><span class="line"><span class="undefined">            top: 0;</span></span><br><span class="line"><span class="undefined">            margin: auto;</span></span><br><span class="line"><span class="undefined">            width: 25px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"file1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>文件1：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar-warpper"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-num"</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"file2"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>文件2：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar-warpper"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-num"</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"file3"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>文件3：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar-warpper"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-num"</span>&gt;</span>0%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-promise-实现"><a href="#2-promise-实现" class="headerlink" title="2) promise 实现"></a>2) promise 实现</h3><p>Promise 可以用 es6 内置、自己开发或者第三方开源 Promise 库，下面的代码直接放到上面 dom 的尾部即可执行。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> f1 = <span class="built_in">document</span>.querySelector(<span class="string">'.file1'</span>);</span><br><span class="line">    <span class="keyword">let</span> f2 = <span class="built_in">document</span>.querySelector(<span class="string">'.file2'</span>);</span><br><span class="line">    <span class="keyword">let</span> f3 = <span class="built_in">document</span>.querySelector(<span class="string">'.file3'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 进度条处理函数</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Progress</span>(<span class="params">dom</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> bar = dom.querySelector(<span class="string">'.progress-bar'</span>);</span><br><span class="line">                <span class="keyword">var</span> num = dom.querySelector(<span class="string">'.progress-num'</span>);</span><br><span class="line">                <span class="keyword">var</span> ow = bar.style.width;</span><br><span class="line">                <span class="keyword">var</span> cw = <span class="built_in">Number</span>(ow.slice(<span class="number">0</span>, ow.length - <span class="number">1</span>)) + <span class="number">1</span>;</span><br><span class="line">                bar.style.width = <span class="built_in">Number</span>(cw) + <span class="string">'%'</span>;</span><br><span class="line">                num.innerHTML = bar.style.width;</span><br><span class="line">                <span class="keyword">if</span>(cw &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">                    clearInterval(timer);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="number">50</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 链式调用保证顺序执行</span></span><br><span class="line">    Progress(f1).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Progress(f2);</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Progress(f3);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-Generator-实现"><a href="#3-Generator-实现" class="headerlink" title="3) Generator 实现"></a>3) Generator 实现</h3><p>生成函数要想达到异步顺序执行，依赖 <a href="https://github.com/tj/co" target="_blank" rel="noopener">co 库</a>（koa 里面用了大量的 generator），我们自己实现一个简单的 co 逻辑来实现我们想要的效果，非常粗暴，大概逻辑了解下即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> f1 = <span class="built_in">document</span>.querySelector(<span class="string">'.file1'</span>);</span><br><span class="line">    <span class="keyword">let</span> f2 = <span class="built_in">document</span>.querySelector(<span class="string">'.file2'</span>);</span><br><span class="line">    <span class="keyword">let</span> f3 = <span class="built_in">document</span>.querySelector(<span class="string">'.file3'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Progress</span>(<span class="params">dom</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> bar = dom.querySelector(<span class="string">'.progress-bar'</span>);</span><br><span class="line">                <span class="keyword">var</span> num = dom.querySelector(<span class="string">'.progress-num'</span>);</span><br><span class="line">                <span class="keyword">var</span> ow = bar.style.width;</span><br><span class="line">                <span class="keyword">var</span> cw = <span class="built_in">Number</span>(ow.slice(<span class="number">0</span>, ow.length - <span class="number">1</span>)) + <span class="number">1</span>;</span><br><span class="line">                bar.style.width = <span class="built_in">Number</span>(cw) + <span class="string">'%'</span>;</span><br><span class="line">                num.innerHTML = bar.style.width;</span><br><span class="line">                <span class="keyword">if</span>(cw &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">                    clearInterval(timer);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="number">50</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">co</span>(<span class="params">gen</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> ctx = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> gen === <span class="string">'function'</span>) &#123;</span><br><span class="line">                gen = gen.apply(ctx, args);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!gen || <span class="keyword">typeof</span> gen.next !== <span class="string">'function'</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> resolve(gen);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            onResolved();</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">onResolved</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> ret;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ret = gen.next(data);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                    <span class="keyword">return</span> reject(e);</span><br><span class="line">                &#125;</span><br><span class="line">                next(ret);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">onReject</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> ret;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ret = gen.throw(err)</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                    <span class="keyword">return</span> reject(e);</span><br><span class="line">                &#125;</span><br><span class="line">                next(ret);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">ret</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// 如果 done 是 true，则表示执行完成</span></span><br><span class="line">                <span class="keyword">if</span> (ret.done) &#123;</span><br><span class="line">                    <span class="keyword">return</span> resolve(ret.value);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 根据 Demo 的情况我们知道我们的 value 就是 promise，其他情况不做扩展，</span></span><br><span class="line">                <span class="comment">//  可以参考 co 源码库：https://github.com/tj/co</span></span><br><span class="line">                <span class="keyword">if</span> (ret.value <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) &#123;</span><br><span class="line">                	<span class="comment">// 通过 promise 的 then 实现异步顺序执行</span></span><br><span class="line">                	<span class="comment">// 同时 onResolved 和 onRejected 中再次调用 next 函数达到递归目的</span></span><br><span class="line">                    <span class="keyword">return</span> ret.value.then(onResolved, onReject);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> onRejected(<span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'type error'</span>));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> Progress(f1);</span><br><span class="line">        <span class="keyword">yield</span> Progress(f2);</span><br><span class="line">        <span class="keyword">yield</span> Progress(f3);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    co(gen);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-async-await-实现"><a href="#4-async-await-实现" class="headerlink" title="4) async/await 实现"></a>4) async/await 实现</h3><p>async/await 是 generator 语法糖， ES2017 标准引入的，开发者就可以不在依赖 co 库了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">let</span> f1 = <span class="built_in">document</span>.querySelector(<span class="string">'.file1'</span>);</span><br><span class="line">    <span class="keyword">let</span> f2 = <span class="built_in">document</span>.querySelector(<span class="string">'.file2'</span>);</span><br><span class="line">    <span class="keyword">let</span> f3 = <span class="built_in">document</span>.querySelector(<span class="string">'.file3'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Progress</span>(<span class="params">dom</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> bar = dom.querySelector(<span class="string">'.progress-bar'</span>);</span><br><span class="line">                <span class="keyword">var</span> num = dom.querySelector(<span class="string">'.progress-num'</span>);</span><br><span class="line">                <span class="keyword">var</span> ow = bar.style.width;</span><br><span class="line">                <span class="keyword">var</span> cw = <span class="built_in">Number</span>(ow.slice(<span class="number">0</span>, ow.length - <span class="number">1</span>)) + <span class="number">1</span>;</span><br><span class="line">                bar.style.width = <span class="built_in">Number</span>(cw) + <span class="string">'%'</span>;</span><br><span class="line">                num.innerHTML = bar.style.width;</span><br><span class="line">                <span class="keyword">if</span>(cw &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">                    clearInterval(timer);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="number">50</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义 async 函数，函数中用 await 保证 promise 的顺序执行</span></span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> l1 = <span class="keyword">await</span> Progress(f1);</span><br><span class="line">        <span class="keyword">let</span> l2 = <span class="keyword">await</span> Progress(f2);</span><br><span class="line">        <span class="keyword">let</span> l3 = <span class="keyword">await</span> Progress(f3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 进入页面的时候开始执行</span></span><br><span class="line">    start();</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1715,7 +1704,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1728,7 +1717,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
