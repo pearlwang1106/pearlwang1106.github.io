@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript,lodash,源码," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="每日一言: 每天都超越自己, 请叫我王超越参考文档: https://www.lodashjs.com/docs/4.17.5.html#get  写在前面开发的时候看到项目中用到了 lodash 的 _.get api, 虽然知道 lodash 是开源的 js 工具库, 但是里面 api 很多, 并没有每个都去研究. 从 _.get 的 api 名字来看, 以为是异步请求接口什么的, 结果看了">
+<meta name="keywords" content="javascript,lodash,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】lodash API - get">
+<meta property="og:url" content="http://yoursite.com/2018/09/26/lodash-get/index.html">
+<meta property="og:site_name" content="Pearl&#39;s Blog">
+<meta property="og:description" content="每日一言: 每天都超越自己, 请叫我王超越参考文档: https://www.lodashjs.com/docs/4.17.5.html#get  写在前面开发的时候看到项目中用到了 lodash 的 _.get api, 虽然知道 lodash 是开源的 js 工具库, 但是里面 api 很多, 并没有每个都去研究. 从 _.get 的 api 名字来看, 以为是异步请求接口什么的, 结果看了">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-27T12:06:49.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】lodash API - get">
+<meta name="twitter:description" content="每日一言: 每天都超越自己, 请叫我王超越参考文档: https://www.lodashjs.com/docs/4.17.5.html#get  写在前面开发的时候看到项目中用到了 lodash 的 _.get api, 虽然知道 lodash 是开源的 js 工具库, 但是里面 api 很多, 并没有每个都去研究. 从 _.get 的 api 名字来看, 以为是异步请求接口什么的, 结果看了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/26/lodash-get/"/>
+
+
+
+
+
+  <title>【学习笔记】lodash API - get | Pearl's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Pearl's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/lodash-get/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【学习笔记】lodash API - get</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-26T18:16:36+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>每日一言: 每天都超越自己, 请叫我王超越<br>参考文档: <a href="https://www.lodashjs.com/docs/4.17.5.html#get" target="_blank" rel="noopener">https://www.lodashjs.com/docs/4.17.5.html#get</a></p>
+</blockquote>
+<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>开发的时候看到项目中用到了 lodash 的 <code>_.get</code> api, 虽然知道 lodash 是开源的 js 工具库, 但是里面 api 很多, 并没有每个都去研究. 从 <code>_.get</code> 的 api 名字来看, 以为是异步请求接口什么的, 结果看了源码才发现完全不是这样.</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>先看一下官方文档对这个 api 的介绍</p>
+<ul>
+<li>_.get(object, path, [defaultValue])<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Gets the value at path of object. If the resolved value is undefined,</span><br><span class="line">the defaultValue is returned in its place.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>翻译过来就是: 获取对象路径上的值, 如果返回的是 <code>undefined</code>, 则用默认值代替.</p>
+<p>从文档中的介绍和示例并没有完全理解这个 api 的具体作用, 所以直接去看了一下源码, 下面对源码进行解读</p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><ul>
+<li>入口 get.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 入口 get.js */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">object, path, defaultValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = object == <span class="literal">null</span> ? <span class="literal">undefined</span> : baseGet(object, path);</span><br><span class="line">    <span class="keyword">return</span> result === <span class="literal">undefined</span> ? defaultValue : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>入口代码很简单, 如果 result 是 undefined, 则返回默认值 <code>defaultValue</code>, 否则返回 result. 这里的关键是 <code>baseGet</code> 函数, 同时 <code>baseGet</code> 也有依赖, 所以下面把各个依赖函数解释下</p>
+<ul>
+<li><p>依赖函数 baseGet</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file _.baseGet.js </span></span><br><span class="line"><span class="comment"> * @function baseGet</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> castPath = <span class="built_in">require</span>(<span class="string">'./_castPath'</span>),</span><br><span class="line">    toKey = <span class="built_in">require</span>(<span class="string">'./_toKey'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseGet</span>(<span class="params">object, path</span>) </span>&#123;</span><br><span class="line">    path = castPath(path, object);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> index = <span class="number">0</span>, length = path.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (object != <span class="literal">null</span> &amp;&amp; index &lt; length) &#123;</span><br><span class="line">        object = object[toKey(path[index++])];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (index &amp;&amp; index == length) ? object : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  知道了下面每个函数的作用之后, 就能分析 baseGet 的逻辑:</p>
+<ul>
+<li>获取数组形式的 path(path = castPath(path, object))</li>
+<li>根据 path 循环查找</li>
+<li>最终返回结果对应的具体值</li>
+<li><p>举个栗子🌰</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用官网文档中的栗子来说明 </span></span><br><span class="line"><span class="comment"> * var object = &#123; 'a': [&#123; 'b': &#123; 'c': 3 &#125; &#125;] &#125;;</span></span><br><span class="line"><span class="comment"> * _.get(object, 'a[0].b.c')  // =&gt; 3</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// baseGet 函数</span></span><br><span class="line"><span class="comment">// 1️⃣  可以获得 path = ['a', '0', 'b', 'c']</span></span><br><span class="line">path = castPath(path, object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2️⃣ while 循环过程可知 object 的变化过程</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * index = 0, object = object[path[0]] = [&#123; 'b': &#123; 'c': 3 &#125; &#125;]</span></span><br><span class="line"><span class="comment"> * index = 1, object = object[path[1]] = &#123; 'b': &#123; 'c': 3 &#125; &#125;</span></span><br><span class="line"><span class="comment"> * index = 2, object = object[path[2]] = &#123; 'c': 3 &#125;</span></span><br><span class="line"><span class="comment"> * index = 3, object = object[path[3]] = 3</span></span><br><span class="line"><span class="comment"> * index = 4, 跳出</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">while</span> (object != <span class="literal">null</span> &amp;&amp; index &lt; length) &#123;</span><br><span class="line">    object = object[toKey(path[index++])];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get 函数</span></span><br><span class="line"><span class="comment">// 所以主入口中 </span></span><br><span class="line">baseGet(object, path) <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = object == <span class="literal">null</span> ? <span class="literal">undefined</span> : baseGet(object, path);</span><br><span class="line"><span class="comment">// result = 3</span></span><br><span class="line"><span class="comment">// 所以最终结论是 3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>依赖函数 castPath</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file _castPath.js</span></span><br><span class="line"><span class="comment"> * @function castPath</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">var</span> isArray = <span class="built_in">require</span>(<span class="string">'./isArray'</span>), <span class="comment">// 判断是否是对象</span></span><br><span class="line">     isKey = <span class="built_in">require</span>(<span class="string">'./_isKey'</span>),</span><br><span class="line">     stringToPath = <span class="built_in">require</span>(<span class="string">'./_stringToPath'</span>),</span><br><span class="line">     toString = <span class="built_in">require</span>(<span class="string">'./toString'</span>); <span class="comment">// 转换成字符串</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">castPath</span>(<span class="params">value, object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isArray(value)) &#123;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> isKey(value, object) ? [value] : stringToPath(toString(value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  如果 value 是数组, 则直接返回数组, 否则如果 value 可以作为 key, 则返回 [value], 否则现将 value 转换成字符串, 再以数组的形式返回</p>
+</li>
+<li><p>依赖函数 toKey</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file _toKey.js</span></span><br><span class="line"><span class="comment"> * @function toKey</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> isSymbol = <span class="built_in">require</span>(<span class="string">'./isSymbol'</span>);</span><br><span class="line"><span class="keyword">var</span> INFINITY = <span class="number">1</span> / <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toKey</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value == <span class="string">'string'</span> || isSymbol(value)) &#123;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> result = (value + <span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> (result == <span class="string">'0'</span> &amp;&amp; (<span class="number">1</span> / value) == -INFINITY) ? <span class="string">'-0'</span> : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  将参数 value 转换成可以做对象 key 的格式, 有如下几种情况:</p>
+<ul>
+<li>value 的类型是 string 直接返回 value</li>
+<li>value 是 symbol 直接返回 value</li>
+<li>不是前两种情况, 如果 value 是 0 , 则返回 ‘-0’, 否则返回 value + ‘’ 作为key</li>
+</ul>
+</li>
+<li><p>依赖函数 isKey</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isArray = <span class="built_in">require</span>(<span class="string">'./isArray'</span>),</span><br><span class="line">    isSymbol = <span class="built_in">require</span>(<span class="string">'./isSymbol'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Used to match property names within property paths. */</span></span><br><span class="line"><span class="keyword">var</span> reIsDeepProp = <span class="regexp">/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/</span>,</span><br><span class="line">    reIsPlainProp = <span class="regexp">/^\w*$/</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isKey</span>(<span class="params">value, object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isArray(value)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> type = <span class="keyword">typeof</span> value;</span><br><span class="line">  <span class="keyword">if</span> (type == <span class="string">'number'</span> || type == <span class="string">'symbol'</span> || type == <span class="string">'boolean'</span> ||</span><br><span class="line">      value == <span class="literal">null</span> || isSymbol(value)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||</span><br><span class="line">    (object != <span class="literal">null</span> &amp;&amp; value <span class="keyword">in</span> <span class="built_in">Object</span>(object));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  从函数名可以知道 isKey 是判断一个 value 是否可以作为一个对象中的 key, 从代码中可以看出, 以下几种情况均是 true:</p>
+<ul>
+<li>value 的类型是 <code>number</code>, <code>symbol</code> 或者 <code>boolean</code></li>
+<li>value 是null</li>
+<li>value 是 symbol 值</li>
+<li>value 是任意字母或数字或下划线或汉字组成的字符串</li>
+<li>value 不是对象(!reIsDeepProp.test(value))</li>
+<li>object 不是 null 并且 value 不是 object 的键值</li>
+</ul>
+</li>
+<li><p>依赖函数 stringToPath</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> memoizeCapped = <span class="built_in">require</span>(<span class="string">'./_memoizeCapped'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Used to match property names within property paths. */</span></span><br><span class="line"><span class="keyword">var</span> rePropName = <span class="regexp">/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Used to match backslashes in property paths. */</span></span><br><span class="line"><span class="keyword">var</span> reEscapeChar = <span class="regexp">/\\(\\)?/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> stringToPath = memoizeCapped(<span class="function"><span class="keyword">function</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line">  <span class="keyword">if</span> (string.charCodeAt(<span class="number">0</span>) === <span class="number">46</span> <span class="comment">/* . */</span>) &#123;</span><br><span class="line">    result.push(<span class="string">''</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  string.replace(rePropName, <span class="function"><span class="keyword">function</span>(<span class="params">match, number, quote, subString</span>) </span>&#123;</span><br><span class="line">    result.push(quote ? subString.replace(reEscapeChar, <span class="string">'$1'</span>) : (number || match));</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>  虽然函数名为 stringToPath, 这里 path 其实是一个数组, 所以是将字符串转换为数组, 同时如果字符串第一个字符是 <code>.</code>, 则用空字符串代替</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/lodash/" rel="tag"># lodash</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/20/ideals30/" rel="next" title="理想三旬">
+                <i class="fa fa-chevron-left"></i> 理想三旬
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/vue-router-code/" rel="prev" title="【学习笔记】vue-router 使用">
+                【学习笔记】vue-router 使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4"
+                alt="Pearl" />
+            
+              <p class="site-author-name" itemprop="name">Pearl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/pearlwang1106" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">3.</span> <span class="nav-text">源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pearl</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
