@@ -239,6 +239,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/27/vue-router-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/27/vue-router-code/" itemprop="url">【学习笔记】vue-router 使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T12:54:18+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考文档: <a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">https://router.vuejs.org/zh/</a></p>
+<p>vue0router 源码: <a href="https://github.com/vuejs/vue-router" target="_blank" rel="noopener">https://github.com/vuejs/vue-router</a></p>
+</blockquote>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Vue Router 是 <a href="https://cn.vuejs.org/" target="_blank" rel="noopener">Vue.js</a> 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。[官方介绍]]</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h3><ul>
+<li>router-link</li>
+</ul>
+<p><code>router-link</code> 有很多属性, 比如 <code>to</code>, <code>replace</code> 和 <code>tag</code> 等, 可以<a href="https://router.vuejs.org/zh/api/#router-link-props" target="_blank" rel="noopener">参考文档 router-link-props</a> 一节</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link tag=<span class="string">"li"</span> to=<span class="string">"/foo"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>router-view</li>
+</ul>
+<p>router-view 是一个 functional 组件，渲染路径匹配到的视图组件, 可以简单的理解为将路由对应的组件渲染在 router-view 中. </p>
+<p>可以<a href="https://jsfiddle.net/6du90epg/7730/" target="_blank" rel="noopener">参考官方效果展示</a>.</p>
+<p>分别点击右下角的 ‘/‘ 和 ‘/other’, 可以看到页面中渲染了不同的视图</p>
+<p>主要原理是通过 <code>&lt;router-view&gt;</code> 的 name 属性, 配置了渲染的组件name</p>
+<p>然后在相应的 path 下配置将组件 name 映射到实际的组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 此段代码从官方效果展示复制过来, 主要为了解释下 router-view 工作 */</span></span><br><span class="line"><span class="comment">/* html 部分 */</span></span><br><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue-router/dist/vue-router.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;h1&gt;Named Views&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;li&gt;</span></span><br><span class="line"><span class="regexp">      &lt;router-link to="/</span><span class="string">"&gt;/&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">    &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt;</span></span><br><span class="line"><span class="string">      &lt;router-link to="</span>/other<span class="string">"&gt;/other&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">    &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">  &lt;router-view class="</span>view one<span class="string">"&gt;hhh&lt;/router-view&gt;</span></span><br><span class="line"><span class="string">  &lt;router-view class="</span>view two<span class="string">" name="</span>a<span class="string">"&gt;&lt;/router-view&gt;</span></span><br><span class="line"><span class="string">  &lt;router-view class="</span>view three<span class="string">" name="</span>b<span class="string">"&gt;&lt;/router-view&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">/* js 部分 */</span></span><br><span class="line"><span class="string">const Foo = &#123; template: '&lt;div&gt;foo&lt;/div&gt;' &#125;</span></span><br><span class="line"><span class="string">const Bar = &#123; template: '&lt;div&gt;bar&lt;/div&gt;' &#125;</span></span><br><span class="line"><span class="string">const Baz = &#123; template: '&lt;div&gt;baz&lt;/div&gt;' &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const router = new VueRouter(&#123;</span></span><br><span class="line"><span class="string">  mode: 'history',</span></span><br><span class="line"><span class="string">  routes: [</span></span><br><span class="line"><span class="string">    &#123; path: '/',</span></span><br><span class="line"><span class="string">      // a single route can define multiple named components</span></span><br><span class="line"><span class="string">      // which will be rendered into &lt;router-view&gt;s with corresponding names.</span></span><br><span class="line"><span class="string">      components: &#123;</span></span><br><span class="line"><span class="string">        default: Foo,</span></span><br><span class="line"><span class="string">        a: Bar,</span></span><br><span class="line"><span class="string">        b: Baz</span></span><br><span class="line"><span class="string">      &#125;,                                                                                                                                               </span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">      path: '/other',</span></span><br><span class="line"><span class="string">      components: &#123;</span></span><br><span class="line"><span class="string">        default: Baz,</span></span><br><span class="line"><span class="string">        a: Bar,</span></span><br><span class="line"><span class="string">        b: Foo</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  ]</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">	router,</span></span><br><span class="line"><span class="string">  el: '#app'</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Router-构建选项"><a href="#Router-构建选项" class="headerlink" title="Router 构建选项"></a>Router 构建选项</h3><p>一般在一个项目中会通过如下方法构建路由, 详细构建参数参考<a href="https://router.vuejs.org/zh/api/#router-%E6%9E%84%E5%BB%BA%E9%80%89%E9%A1%B9" target="_blank" rel="noopener">官网-Router 构建选项</a> 一节.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Router(&#123;</span><br><span class="line">    routes: routes,</span><br><span class="line">    modes: modes</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里 <code>routes</code> 最为常用, 是一个对象数组, 每个字段解释如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;string&#125; 必须 路由</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        path: <span class="string">''</span>,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;Component&#125; 非必须 视图组件</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        component: <span class="string">''</span>,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;string&#125; 非必须 明明路由</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        name: <span class="string">''</span>,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;Object&#125; 非必须 命名视图组件</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        components: &#123; [name: string]: Component &#125;;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;string/Location/Function&#125; 非必须 重定向逻辑</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        redirect?: string | Location | <span class="built_in">Function</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;boolean/string/Function&#125; 非必须 路由属性</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        props?: boolean | string | <span class="built_in">Function</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;string/Array&#125; 非必须 别名</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        alias?: string | <span class="built_in">Array</span>&lt;string&gt;;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;Array&lt;RouteConfig&gt;&#125; 非必须 嵌套路由</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        children?: <span class="built_in">Array</span>&lt;RouteConfig&gt;;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 非必须</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        beforeEnter?: <span class="function">(<span class="params">to: Route, <span class="keyword">from</span>: Route, next: <span class="built_in">Function</span></span>) =&gt;</span> <span class="keyword">void</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;any&#125; 非必须 感觉像是一些业务相关配置</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        meta?: any;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;boolean&#125; 非必须 匹配规则是否大小写敏感？(默认值：false)</span></span><br><span class="line"><span class="comment">         * 2.6.0+</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        caseSensitive?: boolean;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * &#123;Object&#125; 非必须 编译正则的选项</span></span><br><span class="line"><span class="comment">         * 2.6.0+</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        pathToRegexpOptions?: <span class="built_in">Object</span>;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="Router-实例属性和实例方法"><a href="#Router-实例属性和实例方法" class="headerlink" title="Router 实例属性和实例方法"></a>Router 实例属性和实例方法</h3><p>Router 的实例属性和实例方法, <a href="https://router.vuejs.org/zh/api/#router-%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener">官方文档</a>介绍的很详细, 这里不做过多讲解, </p>
+<p>直接参考官方文档即可.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/ideals30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,7 +889,7 @@
 <h2 id="Git-submodule-使用介绍"><a href="#Git-submodule-使用介绍" class="headerlink" title="Git submodule 使用介绍"></a>Git submodule 使用介绍</h2><h4 id="1-添加-submodule"><a href="#1-添加-submodule" class="headerlink" title="1. 添加 submodule"></a>1. 添加 submodule</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https:<span class="comment">//github.com/son   // 这里是假设的地址</span></span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"><span class="comment">// 指定目录</span></span><br><span class="line">git submodule add https:<span class="comment">//github.com/son pathTo</span></span><br></pre></td></tr></table></figure>
 <p>添加后会在当前目录下生成一个配置文件 <code>.gitmodules</code>, 配置文件中有所有 submodule 的相关配置, 多个子项目的配置会根据添加顺序排列. 如:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[submodule <span class="string">"son"</span>]</span><br><span class="line">	path = son</span><br><span class="line">	url = https://github.com/son</span><br></pre></td></tr></table></figure>
-<h4 id="2-clone-子模块项目"><a href="#2-clone-子模块项目" class="headerlink" title="2. clone 子模块项目"></a>2. clone 子模块项目</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* --recursive 会自动的拉去子项目并对其进行更新 */</span></span><br><span class="line">git clone --recursive father <span class="comment">// 假设父项目叫 fathe</span></span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line"><span class="comment">/* clone 父项目后, 进入到项目目录, 初始化子项目并更新子项目 */</span></span><br><span class="line">git clone father</span><br><span class="line">cd father</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+<h4 id="2-clone-子模块项目"><a href="#2-clone-子模块项目" class="headerlink" title="2. clone 子模块项目"></a>2. clone 子模块项目</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * --recursive 会自动的c lone子项目</span></span><br><span class="line"><span class="comment"> * 相当于 git submodule init &amp;&amp; git submodule update </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">git clone --recursive father <span class="comment">// 假设父项目叫 father</span></span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line"><span class="comment">/* clone 父项目后, 进入到项目目录, 初始化子项目并更新子项目 */</span></span><br><span class="line">git clone father</span><br><span class="line">cd father</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
 <h4 id="3-update-子模块项目"><a href="#3-update-子模块项目" class="headerlink" title="3. update 子模块项目"></a>3. update 子模块项目</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 进入到 submodule 中手动更新 */</span></span><br><span class="line">cd son</span><br><span class="line">git fetch</span><br><span class="line">git merge origin/master</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">git submodule update --remote son</span><br></pre></td></tr></table></figure>
 <h4 id="4-查看-子模块项目"><a href="#4-查看-子模块项目" class="headerlink" title="4. 查看 子模块项目"></a>4. 查看 子模块项目</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git diff --submodule</span><br><span class="line"></span><br><span class="line">或添加配置</span><br><span class="line"></span><br><span class="line">git config --local diff.submodule log <span class="comment">// --global 也可以, 这里测试, 只修改了 local</span></span><br><span class="line">git diff</span><br></pre></td></tr></table></figure>
 <h4 id="5-子模块项目指向其分支"><a href="#5-子模块项目指向其分支" class="headerlink" title="5. 子模块项目指向其分支"></a>5. 子模块项目指向其分支</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config -f .gitmodules submodule.son.branch dev</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 查看 .gitmodules 文件可看到如下*/</span></span><br><span class="line">[submodule <span class="string">"son"</span>]</span><br><span class="line">    path = son</span><br><span class="line">    branch = dev</span><br><span class="line">	url = https:<span class="comment">//github.com/son</span></span><br></pre></td></tr></table></figure>
@@ -1505,151 +1649,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/88-merge-sorted-array/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pearl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pearl's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/88-merge-sorted-array/" itemprop="url">【LeetCode】88. Merge Sorted Array</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-27T20:08:01+08:00">
-                2018-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>题目连接: <a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-sorted-array/description/</a></p>
-</blockquote>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><ul>
-<li>输入: 有序数组 nums1, nums1 的长度 m, 有组数组 nums, nums2 的长度 n</li>
-<li>输出: nums2 和 nums1 合并后的有序数组 nums1</li>
-</ul>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><ul>
-<li>输入: [1, 2, 3], 3, [2, 5, 6], 3</li>
-<li>输出: [1, 2, 2, 3, 5, 6]</li>
-</ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>nums1 当前元素 &lt;= nums2, nums1 指针后移</li>
-<li>nums1 当前元素 &gt; nums2<ul>
-<li>nums1 当前元素与 nums2 当前元素交换</li>
-<li>nums2 中当前元素向后比较，找到合适的位置，保证 nums2 是有序的</li>
-</ul>
-</li>
-<li>如果不是本题要求最终返回的还是 nums1，则可以用空间换时间的思路<ul>
-<li>两个指针分别指向 nums1 和 nums2 的当前位置</li>
-<li>nums1 和 nums2 中较小元素 push 到 c 数组中</li>
-<li>返回 c 数组</li>
-</ul>
-</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums1</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; m</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums2</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;void&#125; Do not return anything, modify nums1 in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span>(<span class="params">nums1, m, nums2, n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; m &amp;&amp; j &lt; n) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1[i] &gt; nums2[j]) &#123;</span><br><span class="line">            <span class="keyword">var</span> t = nums1[i];</span><br><span class="line">            nums1[i] = nums2[j];</span><br><span class="line">            nums2[j] = t;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> k = j; k &lt; n; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums2[k] &gt; nums2[k + <span class="number">1</span>]) &#123;</span><br><span class="line">                    t = nums2[k];</span><br><span class="line">                    nums2[k] = nums2[k + <span class="number">1</span>];</span><br><span class="line">                    nums2[k + <span class="number">1</span>] = t;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;n) &#123;</span><br><span class="line">        nums1[i++] = nums2[j++];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1704,7 +1703,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1717,7 +1716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
