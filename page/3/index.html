@@ -239,6 +239,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/pseudo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/pseudo/" itemprop="url">伪元素 vs 伪类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-28T13:24:33+08:00">
+                2018-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>原文链接：<a href="https://css-tricks.com/to-double-colon-or-not-do-double-colon/" target="_blank" rel="noopener">https://css-tricks.com/to-double-colon-or-not-do-double-colon/</a></p>
+</blockquote>
+<p>看了一篇讲双冒号和单冒号的博文，感觉讲的蛮细致的，所以这里翻译出来，如有翻译有误的地方辛苦指正。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>试问：CSS 中的双冒号 <code>::before</code> 和 单冒号 <code>:before</code> 哪种是伪元素的正确表述方式？</p>
+<p>从技术角度讲，双冒号 <code>::before</code> 是正确的，但是这样并不意味着所有情况都用双冒号。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>双冒号选择器表示的是伪元素</li>
+<li>单冒号选择器表示的是伪选择器</li>
+</ul>
+<p>而 <code>::before</code> 肯定是表示伪元素，所以这里应该用双冒号。</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>伪元素和伪选择器的用法经常会让人感到困惑，所以一般都是直接使用 <code>::before</code> 和 <code>::after</code>，这两者都是通过中页面添加新的元素来达到想要实现都页面效果。</p>
+<p>但是类似 <code>::first-letter</code> 这样都用法也是一个伪元素。所以我觉得它是用来选择页面上不存在的 HTML 元素中的一部分的。也就是说你想要选择的元素没有像 <code>&lt;span&gt;</code> 这样的标签包裹着，所以这 <code>first letter</code> 也可以认为是你要添加到页面上的一个元素。而伪选择器却不同，他们指向的都是页面中已经存在的元素，比如 <code>:nth-child(2)</code>。</p>
+<p>事实上，有一些特殊场景下不能通过双冒号来使用伪元素：</p>
+<ul>
+<li>IE8 以下的IE浏览器只支持 <code>:before</code> 不支持 <code>::before</code></li>
+<li>由于有大量站点使用了 <code>:before</code> 而浏览器的升级是向下兼容的，所以所有的现代浏览器都是支持这两种方式的</li>
+<li>少写一个字符也算是一种奖励吧</li>
+</ul>
+<p>听有些人说他们使用的 CSS 代码规范检查工具（或者自动化工具）要求必须使用单冒号。就我个人而言，无论选择哪种方式都是可以的。</p>
+<p>另一方面，有一个反面论点：</p>
+<ul>
+<li>单冒号伪元素是错误的，因为不会有伪元素是用单冒号的</li>
+<li>如果你认为这也是有区别的，不妨平时写代码的时候也按照正确的方式进行开发</li>
+<li>这些说的已经够混乱了，所以让我们按照正确的方法进行</li>
+</ul>
+<p>我已经通过配置我的自动化工具强制开发过程中使用双冒号了，因为我的开发过程中不会兼容到 IE8，所以目前开发中没有任何问题。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/js-async/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1430,7 +1576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -239,6 +239,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/es6-thunk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/19/es6-thunk/" itemprop="url">【学习笔记】Thunk 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-19T16:28:43+08:00">
+                2018-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树</p>
+</blockquote>
+<p>从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(x + <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>编程语言对于上述程序的求值策略有两种意见，即『传值策略（call by value）』和『传名调用（call by name）』。</p>
+<ul>
+<li>传值调用：先计算出 x + 5(=6)， 再调用 f(6)<ul>
+<li>优点：简单</li>
+<li>缺点：某些参数没用到就计算，会造成性能损失</li>
+</ul>
+</li>
+<li>传名调用：直接将表达式 x + 5 传入函数体，即 (x + 5) * 2</li>
+</ul>
+<h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><blockquote>
+<p>【摘自阮一峰的《ES6 标准入门》】编译器的“传名调用”的实现往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就成为 Thunk 函数。</p>
+</blockquote>
+<h3 id="Javascript-的-Thunk-函数"><a href="#Javascript-的-Thunk-函数" class="headerlink" title="Javascript 的 Thunk 函数"></a>Javascript 的 Thunk 函数</h3><blockquote>
+<p>JS 语音是传值调用，所以在 JS 中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成一个只接受毁掉函数作为参数的单参数函数，如下例：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f(a, cb);</span><br><span class="line"></span><br><span class="line">var Thunk = function (a) &#123;</span><br><span class="line">    return function (cb) &#123;</span><br><span class="line">        return f(a, cb); </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var ex = Thunk(a);</span><br><span class="line">ex(cb);</span><br></pre></td></tr></table></figure>
+<p>可以看出，对于一个有多个参数的函数（有一个参数是毁掉函数），Thunk 函数的作用就是将其转换成一个只接收回调函数作为参数的单参数函数。</p>
+<h2 id="thunkify-模块"><a href="#thunkify-模块" class="headerlink" title="thunkify 模块"></a>thunkify 模块</h2><blockquote>
+<p>源码：<a href="https://github.com/tj/node-thunkify" target="_blank" rel="noopener">https://github.com/tj/node-thunkify</a><br>npmjs：<a href="https://www.npmjs.com/package/thunkify" target="_blank" rel="noopener">https://www.npmjs.com/package/thunkify</a></p>
+</blockquote>
+<p>thunkify 是一个可以直接拿过来用的封装好的 Thunk 函数，源码很简单，限制了回调函数只允许执行一次。和 co 一样是 tj 开发的，好吧，tj已经是我偶像了。</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>书中讲，以前是没什么用的，因为没有什么使用场景，但是 ES6 中有了 Generator 函数之后， Thunk 函数就可以用于 Generator 函数的自动流程管理。</p>
+<h3 id="举个-🌰-1"><a href="#举个-🌰-1" class="headerlink" title="举个 🌰"></a>举个 🌰</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen();</span><br><span class="line"><span class="keyword">var</span> res = g.next();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(!res.done) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res.value);</span><br><span class="line">    res = g.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述情况下，while 循环会一直自动执行 gen.next 直到完成所有的步骤。这样有一个缺点是，在异步下，需要等前一个异步操作执行完之后再继续执行。此时，就需要借助 Thunk 函数。举一个书中的栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 以读取文件为例 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> thunkify = <span class="built_in">require</span>(<span class="string">'thunkify'</span>);</span><br><span class="line"><span class="keyword">var</span> readFileThunk = thunkify(fs.readFile);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gen = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> r1 = yeild readFileThunk(<span class="string">'/etc/fstab'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(r1.toString());</span><br><span class="line">    <span class="keyword">var</span> r2 = yeild readFileThunk(<span class="string">'/etc/shells'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(r2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>众所周知，Generator 函数中的 yeild 是交出 Generator 函数的执行权，即去执行异步函数，而 yeild 后面跟的 Thunk 函数可以在回调函数中，将执行权重新交给 Generator。</p>
+<p>此时，可以通过一个 Generator 函数的自动执行器来自动执行 Generator 函数。如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> gen = fn();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = gen.next(data);</span><br><span class="line">        <span class="keyword">if</span> (result.done) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result.value(next);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    next();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">g</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line">run(g);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/vuex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,132 +1727,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/js-var-and-let/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pearl">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pearl's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/js-var-and-let/" itemprop="url">变量作用域：var 和 let</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T20:57:51+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>ES5 中 var 定义的变量会做变量提升（提升至当前作用域），ES6 中的 let 不会做变量提升，但是会造成块级作用域的暂时性死区</p>
-<blockquote>
-<p>参考：<a href="http://es6.ruanyifeng.com/#docs/let" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/let</a></p>
-</blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有如下代码，请写出输出结果：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b  = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.b);</span><br><span class="line">        <span class="built_in">console</span>.log(b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = F();</span><br><span class="line">d();</span><br></pre></td></tr></table></figure>
-<p>根据 var 以及 let 的特型，对上面的代码进行转换（同时标记每行输出）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b  = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// 1</span></span><br><span class="line">    <span class="built_in">console</span>.log(a);      <span class="comment">// ReferenceError  有 let 暂时性死区导致</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 2</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);      <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">// 1</span></span><br><span class="line">        <span class="built_in">console</span>.log(a);      <span class="comment">// 3</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.b); <span class="comment">// 2</span></span><br><span class="line">        <span class="built_in">console</span>.log(b);      <span class="comment">// 4</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 此种调用方式，非严格模式下，F() 中的 this 会找其上级，所以最终指向 window */</span></span><br><span class="line"><span class="keyword">var</span> d = F();</span><br><span class="line">d();</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1756,7 +1781,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
