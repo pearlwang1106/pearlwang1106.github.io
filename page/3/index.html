@@ -239,6 +239,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/189-rotate-array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pearl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22272732?s=400&u=c8f3c5767dd9b1f6527be3f6d838171f8e69d1d1&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pearl's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/29/189-rotate-array/" itemprop="url">【Leetcode】189. Rotate Array</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-29T20:02:07+08:00">
+                2018-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>题目链接：<a href="https://leetcode.com/problems/rotate-array/description/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-array/description/</a></p>
+</blockquote>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个数组和一个数字 k，将数组的后 k 个数字移动到数组前面</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p><strong>示例1：</strong></p>
+<ul>
+<li>输入：nums = [1,2,3,4,5], k = 2</li>
+<li>输出：[4,5,1,2,3]</li>
+</ul>
+<p><strong>示例2：</strong></p>
+<ul>
+<li>输入：nums = [1,2,3,4,5,6], k = 3</li>
+<li>输出：[4,5,6,1,2,3]</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>方法1：</strong></p>
+<ul>
+<li>如果每个数字当前所在的位置是 curr，那么他移动后的位置则是 (curr + k) % nums.length</li>
+<li>所以可以每个数字移动到他的下一位，然后把下一位数字继续移动到下一位</li>
+<li>上面的例子的移动过程可以描述如下：<ul>
+<li>示例1：1 -&gt; 3, 3 - &gt; 5, 5 -&gt; 2, 2 -&gt; 4, 4 -&gt; 1</li>
+<li>示例2：<ul>
+<li>1 -&gt; 4, 4 -&gt; 1</li>
+</ul>
+</li>
+<li>2 -&gt; 5, 5 -&gt; 2</li>
+<li>3 -&gt; 6, 6 -&gt; 3</li>
+</ul>
+</li>
+</ul>
+<p><strong>方法2：</strong></p>
+<ul>
+<li>首先将整个数组倒叙</li>
+<li>前 k 个数字再倒叙</li>
+<li>后 nums.length - k 个数字倒叙</li>
+<li>上面的例子的移动过程：<ul>
+<li>示例1：<ul>
+<li>[5,4,3,2,1]</li>
+<li>[4,5,3,2,1]</li>
+<li>[4,5,1,2,3]</li>
+</ul>
+</li>
+<li>示例2：<ul>
+<li>[6,5,4,3,2,1]</li>
+<li>[4,5,6,3,2,1]</li>
+<li>[4,5,6,1,2,3]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>方法1：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(n)</span></span><br><span class="line"><span class="comment"> * 空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="comment"> * @return &#123;void&#125; Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> rotate = <span class="function"><span class="keyword">function</span>(<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = nums.length;</span><br><span class="line">    k = k % nums.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用于标记当前已经找到正确位置的数字的个数</span></span><br><span class="line">    <span class="keyword">var</span> cnt = <span class="number">0</span>;        </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; cnt &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> curr = i;                   <span class="comment">// 指向当前将要移动的数字的坐标</span></span><br><span class="line">        <span class="keyword">var</span> next = (i + k) % len;       <span class="comment">// 当前数字应该移动到的地方的坐标</span></span><br><span class="line">        <span class="keyword">var</span> prev = nums[i];             <span class="comment">// 上一位数字</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> tmp = nums[next];</span><br><span class="line">            nums[next] = prev;</span><br><span class="line">            prev = tmp;</span><br><span class="line">            curr = next;</span><br><span class="line">            next = (next + k) % len;</span><br><span class="line">            cnt ++;</span><br><span class="line">        &#125; <span class="keyword">while</span>(i !== curr);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(2n) = O(n)</span></span><br><span class="line"><span class="comment"> * 空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reverse = <span class="function"><span class="keyword">function</span>(<span class="params">array, st, ed</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = st; i &lt; (st + ed) / <span class="number">2</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> tmp = array[ed + st - i - <span class="number">1</span>];</span><br><span class="line">        array[ed + st - i - <span class="number">1</span>] = array[i];</span><br><span class="line">        array[i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="comment"> * @return &#123;void&#125; Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> rotate = <span class="function"><span class="keyword">function</span>(<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line">    k = k % nums.length;</span><br><span class="line">    nums = reverse(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">    nums = reverse(nums, <span class="number">0</span>, k);</span><br><span class="line">    nums = reverse(nums, k, nums.length);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/pseudo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,7 +1748,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值策略（ca">
+<meta name="description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值调用（ca">
 <meta name="keywords" content="javascript,generator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】Thunk 函数">
 <meta property="og:url" content="http://yoursite.com/2018/10/19/es6-thunk/index.html">
 <meta property="og:site_name" content="Pearl&#39;s Blog">
-<meta property="og:description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值策略（ca">
+<meta property="og:description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值调用（ca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-19T11:16:34.177Z">
+<meta property="og:updated_time" content="2018-10-23T06:45:04.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】Thunk 函数">
-<meta name="twitter:description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值策略（ca">
+<meta name="twitter:description" content="每日一言：绅士就是所做的不是自己想做之事，而是自己应做之事 - 村上春树  从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。 背景举个 🌰123456var x = 1;function f(m) &amp;#123;    return m * 2;&amp;#125;f(x + 5); 编程语言对于上述程序的求值策略有两种意见，即『传值调用（ca">
 
 
 
@@ -315,7 +315,7 @@
 </blockquote>
 <p>从阮一峰的《ES6 标准入门》了解到 Thunk 函数的概念，为什么百度翻译 Thunk 是 臀部 😓 。</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(x + <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-<p>编程语言对于上述程序的求值策略有两种意见，即『传值策略（call by value）』和『传名调用（call by name）』。</p>
+<p>编程语言对于上述程序的求值策略有两种意见，即『传值调用（call by value）』和『传名调用（call by name）』。</p>
 <ul>
 <li>传值调用：先计算出 x + 5(=6)， 再调用 f(6)<ul>
 <li>优点：简单</li>
@@ -328,7 +328,7 @@
 <p>【摘自阮一峰的《ES6 标准入门》】编译器的“传名调用”的实现往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就成为 Thunk 函数。</p>
 </blockquote>
 <h3 id="Javascript-的-Thunk-函数"><a href="#Javascript-的-Thunk-函数" class="headerlink" title="Javascript 的 Thunk 函数"></a>Javascript 的 Thunk 函数</h3><blockquote>
-<p>JS 语音是传值调用，所以在 JS 中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成一个只接受毁掉函数作为参数的单参数函数，如下例：</p>
+<p>JS 语音是传值调用，所以在 JS 中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成一个只接受回调函数作为参数的单参数函数，如下例：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f(a, cb);</span><br><span class="line"></span><br><span class="line">var Thunk = function (a) &#123;</span><br><span class="line">    return function (cb) &#123;</span><br><span class="line">        return f(a, cb); </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var ex = Thunk(a);</span><br><span class="line">ex(cb);</span><br></pre></td></tr></table></figure>
 <p>可以看出，对于一个有多个参数的函数（有一个参数是毁掉函数），Thunk 函数的作用就是将其转换成一个只接收回调函数作为参数的单参数函数。</p>
@@ -383,6 +383,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/insomnia/" rel="prev" title="失眠的第十三天">
+                失眠的第十三天 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -463,7 +467,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
