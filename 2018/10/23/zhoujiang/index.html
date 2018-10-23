@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javascript,原型,面试," />
+  <meta name="keywords" content="随笔,碎片," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="面试的时候被到原型的相关问题，回来后再次学习了一下原型及原型链，在这里做个总结。 问题 1234567891011121314case1:function F() &amp;#123;&amp;#125;var f = new F();case2:function F() &amp;#123;return &amp;apos;123&amp;apos;;&amp;#125;var f = new F();case3:function F() &amp;">
-<meta name="keywords" content="javascript,原型,面试">
+<meta name="description" content="三行情诗 我梦见我老了那些说做我拐杖的人一个都没有来  迷途人 我在沙漠给你写信飞尘灼日以及没有回声的黑夜有一天比没有墨了我也走不出这一篇土地了  守旧 你是深山的游客边走边爱 四海为家 生性多情我是集市里的养猫者不看路上 不换爱人">
+<meta name="keywords" content="随笔,碎片">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原型及原型链的简单理解">
-<meta property="og:url" content="http://yoursite.com/2018/09/23/js-prototype/index.html">
+<meta property="og:title" content="周将的诗">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/zhoujiang/index.html">
 <meta property="og:site_name" content="Pearl&#39;s Blog">
-<meta property="og:description" content="面试的时候被到原型的相关问题，回来后再次学习了一下原型及原型链，在这里做个总结。 问题 1234567891011121314case1:function F() &amp;#123;&amp;#125;var f = new F();case2:function F() &amp;#123;return &amp;apos;123&amp;apos;;&amp;#125;var f = new F();case3:function F() &amp;">
+<meta property="og:description" content="三行情诗 我梦见我老了那些说做我拐杖的人一个都没有来  迷途人 我在沙漠给你写信飞尘灼日以及没有回声的黑夜有一天比没有墨了我也走不出这一篇土地了  守旧 你是深山的游客边走边爱 四海为家 生性多情我是集市里的养猫者不看路上 不换爱人">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T09:11:28.943Z">
+<meta property="og:updated_time" content="2018-10-23T11:30:21.745Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原型及原型链的简单理解">
-<meta name="twitter:description" content="面试的时候被到原型的相关问题，回来后再次学习了一下原型及原型链，在这里做个总结。 问题 1234567891011121314case1:function F() &amp;#123;&amp;#125;var f = new F();case2:function F() &amp;#123;return &amp;apos;123&amp;apos;;&amp;#125;var f = new F();case3:function F() &amp;">
+<meta name="twitter:title" content="周将的诗">
+<meta name="twitter:description" content="三行情诗 我梦见我老了那些说做我拐杖的人一个都没有来  迷途人 我在沙漠给你写信飞尘灼日以及没有回声的黑夜有一天比没有墨了我也走不出这一篇土地了  守旧 你是深山的游客边走边爱 四海为家 生性多情我是集市里的养猫者不看路上 不换爱人">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/23/js-prototype/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/23/zhoujiang/"/>
 
 
 
 
 
-  <title>原型及原型链的简单理解 | Pearl's Blog</title>
+  <title>周将的诗 | Pearl's Blog</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/js-prototype/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/zhoujiang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pearl">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">原型及原型链的简单理解</h1>
+          <h1 class="post-title" itemprop="name headline">周将的诗</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T10:43:31+08:00">
-                2018-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T19:23:37+08:00">
+                2018-10-23
               </time>
             
 
@@ -310,32 +310,15 @@
       
 
       
-        <p>面试的时候被到原型的相关问题，回来后再次学习了一下原型及原型链，在这里做个总结。</p>
-<p><strong>问题</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line"></span><br><span class="line">function F() &#123;&#125;</span><br><span class="line">var f = new F();</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line"></span><br><span class="line">function F() &#123;return &apos;123&apos;;&#125;</span><br><span class="line">var f = new F();</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line"></span><br><span class="line">function F() &#123;return &#123;a:1&#125;;&#125;</span><br><span class="line">var f = new F();</span><br></pre></td></tr></table></figure>
-<p>这两种情况，f 的原型是如何指向的？</p>
-<p><strong>理解</strong></p>
-<p>想要知道 f 的原型指向，需要先了解 f 具体是什么。下面先说一下经过上述步骤后 的具体值分别是什么。</p>
-<p>首先，通过 new 来调用函数或者方法的方式，是<code>构造函数调用</code>。有三种情况：</p>
-<ol>
-<li>构造函数不使用 return 关键字，这种情况下，会初始化一个新的对象，这个对象继承自构造函数的 prototype 属性；当构造函数的执行体执行完毕时，会返回这个新对象。此时，构造函数调用表达式的计算结果就是这个新对象的值，如问题中的 case1。</li>
-<li>构造函数显式的使用了 return 关键字，返回了一个原始值，如问题中的 case2；这种情况下，仍然会初始化一个新的对象，这个对象继承自构造函数的 prototype 属性，return 的返回值将会被忽略，同时使用新对象作为调用结果。</li>
-<li>构造函数显式的使用了 return 关键字，并且返回了一个对象，如问题中的 case3，这种情况下，调用表达式的值就是这个对象。</li>
-</ol>
-<p>如果问题描述不是很清楚，可以从代码层面理解一下，new 过程的代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function new() &#123;</span><br><span class="line">    // 创建一个空的对象</span><br><span class="line">    let obj = new Object()</span><br><span class="line">    // 获得构造函数</span><br><span class="line">    let Con = [].shift.call(arguments)</span><br><span class="line">    // 链接到原型</span><br><span class="line">    obj.__proto__ = Con.prototype</span><br><span class="line">    // 绑定 this，执行构造函数</span><br><span class="line">    let result = Con.apply(obj, arguments)</span><br><span class="line">    // 确保 new 出来的是个对象</span><br><span class="line">    return typeof result === &apos;object&apos; ? result : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从代码也可以看出，new 的过程最后会判断函数中 return 的是否是 object，不是的话才会返回一个新的对象</p>
-<p>所以上述问题中的三种情况，结果分别是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line">console.log(f);  // F &#123;&#125;</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line">console.log(f);  // F &#123;&#125;</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line">console.log(f); // &#123;a: 1&#125;</span><br></pre></td></tr></table></figure>
-<p>所以，根据原型链可知</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">case1:</span><br><span class="line"></span><br><span class="line">f.__proto__ === F.prototype;</span><br><span class="line">F.__proto__ === Function.prototype;</span><br><span class="line">F.prototype.__proto__ === Object.prototype // 原型对象也是对象</span><br><span class="line"></span><br><span class="line">case2:</span><br><span class="line"></span><br><span class="line">同 case1</span><br><span class="line"></span><br><span class="line">case3:</span><br><span class="line"></span><br><span class="line">f.__proto__ === Object.prototype</span><br><span class="line">F.__proto__ === Function.prototype</span><br><span class="line">F.prototype.__proto__ === Object.prototype // 原型对象也是对象</span><br></pre></td></tr></table></figure>
-<ul>
-<li>参考文档：<ul>
-<li><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">https://github.com/KieSun/Blog/issues/2</a></li>
-<li>javascript 权威指南</li>
-</ul>
-</li>
-</ul>
+        <h3 id="三行情诗"><a href="#三行情诗" class="headerlink" title="三行情诗"></a>三行情诗</h3><blockquote>
+<p>我梦见我老了<br>那些说做我拐杖的人<br>一个都没有来</p>
+</blockquote>
+<h3 id="迷途人"><a href="#迷途人" class="headerlink" title="迷途人"></a>迷途人</h3><blockquote>
+<p>我在沙漠给你写信<br>飞尘灼日以及没有回声的黑夜<br>有一天比没有墨了<br>我也走不出这一篇土地了</p>
+</blockquote>
+<h3 id="守旧"><a href="#守旧" class="headerlink" title="守旧"></a>守旧</h3><blockquote>
+<p>你是深山的游客<br>边走边爱 四海为家 生性多情<br>我是集市里的养猫者<br>不看路上 不换爱人</p>
+</blockquote>
 
       
     </div>
@@ -353,11 +336,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag"># javascript</a>
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
           
-            <a href="/tags/原型/" rel="tag"># 原型</a>
-          
-            <a href="/tags/面试/" rel="tag"># 面试</a>
+            <a href="/tags/碎片/" rel="tag"># 碎片</a>
           
         </div>
       
@@ -370,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/20/ideals30/" rel="next" title="理想三旬">
-                <i class="fa fa-chevron-left"></i> 理想三旬
+              <a href="/2018/10/22/insomnia/" rel="next" title="失眠的第十三天">
+                <i class="fa fa-chevron-left"></i> 失眠的第十三天
               </a>
             
           </div>
@@ -379,10 +360,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/24/single-number/" rel="prev" title="【LeetCode】Single Number I && II && III">
-                【LeetCode】Single Number I && II && III <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -434,8 +411,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -500,6 +486,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#三行情诗"><span class="nav-number">1.</span> <span class="nav-text">三行情诗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迷途人"><span class="nav-number">2.</span> <span class="nav-text">迷途人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#守旧"><span class="nav-number">3.</span> <span class="nav-text">守旧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
