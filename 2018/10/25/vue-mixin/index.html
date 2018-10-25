@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,javascript,字符串," />
+  <meta name="keywords" content="javascript,vue,mixin," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="题目链接：https://leetcode.com/problems/longest-substring-without-repeating-characters/description/  题目描述给定一个字符串，找出不含有重复字符的最长子串的长度 输入输出示例1：  输入：”abcabcbb” 输出：3  示例2：  输入：”bbbbb” 输出：1  思路前几天做了一道通过滑动窗口解决道问题">
-<meta name="keywords" content="leetcode,javascript,字符串">
+<meta name="description" content="每日一言：有点无聊，我们来一起骂男人吧参考文档：https://vuejs.org/v2/guide/mixins.html  定义【摘自 vue 官网】混入 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。 简单讲，混入就是讲一个数据对象中的属性合并到组件中，达到对可复用的属">
+<meta name="keywords" content="javascript,vue,mixin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Leetcode】3. Longest Substring Without Repeating Characters">
-<meta property="og:url" content="http://yoursite.com/2018/09/11/003-longest-substring-without-repeatint-characters/index.html">
+<meta property="og:title" content="【学习笔记】Vue mixin">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/vue-mixin/index.html">
 <meta property="og:site_name" content="Pearl&#39;s Blog">
-<meta property="og:description" content="题目链接：https://leetcode.com/problems/longest-substring-without-repeating-characters/description/  题目描述给定一个字符串，找出不含有重复字符的最长子串的长度 输入输出示例1：  输入：”abcabcbb” 输出：3  示例2：  输入：”bbbbb” 输出：1  思路前几天做了一道通过滑动窗口解决道问题">
+<meta property="og:description" content="每日一言：有点无聊，我们来一起骂男人吧参考文档：https://vuejs.org/v2/guide/mixins.html  定义【摘自 vue 官网】混入 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。 简单讲，混入就是讲一个数据对象中的属性合并到组件中，达到对可复用的属">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-12T02:17:10.618Z">
+<meta property="og:updated_time" content="2018-10-25T11:26:32.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Leetcode】3. Longest Substring Without Repeating Characters">
-<meta name="twitter:description" content="题目链接：https://leetcode.com/problems/longest-substring-without-repeating-characters/description/  题目描述给定一个字符串，找出不含有重复字符的最长子串的长度 输入输出示例1：  输入：”abcabcbb” 输出：3  示例2：  输入：”bbbbb” 输出：1  思路前几天做了一道通过滑动窗口解决道问题">
+<meta name="twitter:title" content="【学习笔记】Vue mixin">
+<meta name="twitter:description" content="每日一言：有点无聊，我们来一起骂男人吧参考文档：https://vuejs.org/v2/guide/mixins.html  定义【摘自 vue 官网】混入 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。 简单讲，混入就是讲一个数据对象中的属性合并到组件中，达到对可复用的属">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/11/003-longest-substring-without-repeatint-characters/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/25/vue-mixin/"/>
 
 
 
 
 
-  <title>【Leetcode】3. Longest Substring Without Repeating Characters | Pearl's Blog</title>
+  <title>【学习笔记】Vue mixin | Pearl's Blog</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/003-longest-substring-without-repeatint-characters/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/vue-mixin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pearl">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【Leetcode】3. Longest Substring Without Repeating Characters</h1>
+          <h1 class="post-title" itemprop="name headline">【学习笔记】Vue mixin</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T21:58:34+08:00">
-                2018-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T19:03:52+08:00">
+                2018-10-25
               </time>
             
 
@@ -311,22 +311,24 @@
 
       
         <blockquote>
-<p>题目链接：<a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-substring-without-repeating-characters/description/</a></p>
+<p>每日一言：有点无聊，我们来一起骂男人吧<br>参考文档：<a href="https://vuejs.org/v2/guide/mixins.html" target="_blank" rel="noopener">https://vuejs.org/v2/guide/mixins.html</a></p>
 </blockquote>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，找出不含有重复字符的最长子串的长度</p>
-<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p><strong>示例1：</strong></p>
-<ul>
-<li>输入：”abcabcbb”</li>
-<li>输出：3</li>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>【摘自 vue 官网】混入 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。</p>
+<p>简单讲，混入就是讲一个数据对象中的属性合并到组件中，达到对可复用的属性，方法，功能等一个比较高的利用率。</p>
+<h3 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 摘自官网 */</span></span><br><span class="line"><span class="keyword">var</span> myMixin = &#123;</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.hello();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello from mixin!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 调用 */</span></span><br><span class="line"><span class="keyword">var</span> Component = Vue.extend(&#123;</span><br><span class="line">  mixins: [myMixin]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> Component(); <span class="comment">// =&gt; "hello from mixin!"</span></span><br></pre></td></tr></table></figure>
+<p>上述例子可以看出，首先定义了一个 mixin 对象 myMixin，对象中有两个 function，created 和 methods。然后通过 Vue.extend 将 myMixin 混入到组件 Component 中，也就是说 Component 组件用用了 created 和 methods 两个方法。此时通过 new 去创建一个组件实例的时候会自动执行这两个个函数。</p>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><ul>
+<li><p>当组件和混入对象含有同名选项时，这些选项将以恰当的方式混合</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 摘自官网 */</span></span><br><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">'hello'</span>,</span><br><span class="line">      foo: <span class="string">'abc'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  mixins: [mixin],</span><br><span class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      message: <span class="string">'goodbye'</span>,</span><br><span class="line">      bar: <span class="string">'def'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$data)</span><br><span class="line">    <span class="comment">// =&gt; &#123; message: "goodbye", foo: "abc", bar: "def" &#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>混入对象的钩子将在组件自身钩子之前调用</p>
+</li>
+<li>值为对象的选项，例如 methods, components 和 directives，将被混合为同一个对象。两个对象键名冲突时，取组件对象的键值对</li>
+<li>也可以全局注册混入对象，一旦使用全局混入对象，将会影响到 所有 之后创建的 Vue 实例，需要恰当使用</li>
 </ul>
-<p><strong>示例2：</strong></p>
-<ul>
-<li>输入：”bbbbb”</li>
-<li>输出：1</li>
+<h2 id="混入策略"><a href="#混入策略" class="headerlink" title="混入策略"></a>混入策略</h2><ul>
+<li>参考：<a href="https://vuejs.org/v2/guide/mixins.html#Custom-Option-Merge-Strategies" target="_blank" rel="noopener">https://vuejs.org/v2/guide/mixins.html#Custom-Option-Merge-Strategies</a></li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>前几天做了一道通过滑动窗口解决道问题，这里依然借用这个思想。</p>
-<p>首先有一个 map 对象，来存字符串中出现的单个字符最近的坐标（可以理解为最接近right的坐标）。如果 left 和 right 中出现了重复字符，则 left 指针移动道重复字符后一位，当 right 和 left 的距离大于 sum， 则 sum = right - left</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间复杂度 O(n)</span></span><br><span class="line"><span class="comment"> * 空间复杂度 O(n)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> lengthOfLongestSubstring = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> map = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> left = sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> right = <span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(right++ &lt; s.length - 1 &amp;&amp; left &lt;= s.length) &#123;</span><br><span class="line">        // 如果当前字符在 无重复字符串中已存在，则 左指针从重复字符的下一位开始</span><br><span class="line">        // 同时重复字符的坐标变更</span><br><span class="line">        if(map[s[right]] &amp;&amp; map[s[right]] &gt;= left) &#123;</span><br><span class="line">            left = map[s[right]];</span><br><span class="line">            map[s[right]] = right + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果不存在，则添加到 map 中</span><br><span class="line">        else &#123;</span><br><span class="line">            map[s[right]] = right + 1;</span><br><span class="line">            if(right - left + 1 &gt; sum) &#123;</span><br><span class="line">                sum = right - left + 1;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -344,11 +346,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
           
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/mixin/" rel="tag"># mixin</a>
           
         </div>
       
@@ -361,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/30/122-best-time-to-bssII/" rel="next" title="【Leetcode】122. Best Time to Buy and Sell Stock II">
-                <i class="fa fa-chevron-left"></i> 【Leetcode】122. Best Time to Buy and Sell Stock II
+              <a href="/2018/10/23/zhoujiang/" rel="next" title="周将的诗">
+                <i class="fa fa-chevron-left"></i> 周将的诗
               </a>
             
           </div>
@@ -370,10 +372,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/12/git-submodule/" rel="prev" title="Git submodule (Git 子模块)">
-                Git submodule (Git 子模块) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出"><span class="nav-number">2.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#举个-🌰"><span class="nav-number">1.1.</span> <span class="nav-text">举个 🌰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规则"><span class="nav-number">2.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混入策略"><span class="nav-number">3.</span> <span class="nav-text">混入策略</span></a></li></ol></div>
             
 
           </div>
